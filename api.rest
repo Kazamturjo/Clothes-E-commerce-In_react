@@ -1,0 +1,6 @@
+POST http://localhost:5000/product/add/500
+content-type: application/json
+
+{
+"productName": "Hoddie", "description": " description pen - 21", "price": 40, "status": true, "isActive": true, "isDeleted": false, "createDate": "2023-09-02T12:00:00Z", "deleteDate": null,"image":"https://i.pinimg.com/564x/c1/19/98/c11998daba6a85c01797cfb2fd75ed98.jpg"
+}
