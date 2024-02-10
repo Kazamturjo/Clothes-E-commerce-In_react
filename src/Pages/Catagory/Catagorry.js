@@ -29,10 +29,10 @@ const Catagorry = () => {
             </div>
             <div className='md:w-[670px] lg:w-1/2 '>
                 <div className=' grid lg:grid-cols-2 grid-cols-2 gap-2 mt-2 lg:mt-0 '>
-                    <Link to='/'><img src='https://i.pinimg.com/736x/ee/cf/e0/eecfe067a40576e50f42ce1ed3619ac4.jpg' alt='' className=' group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/></Link>
-                    <Link to='/'><img src='https://i.pinimg.com/564x/17/d8/12/17d81234c02642e8898c8eac113927bb.jpg' alt='' className='group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/></Link>
-                    <Link to='/'><img src='https://i.pinimg.com/564x/0a/a6/8b/0aa68bc150ae0b459dcf085ba3561f50.jpg' alt='' className='group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/></Link>
-                    <Link to='/'><img src='https://i.pinimg.com/564x/2f/f3/09/2ff309549573d74d8b6f339aff6adb85.jpg' alt='' className='lg:h-[457px]  group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/></Link>
+                    <Link to='/shop'><img src='https://i.pinimg.com/736x/ee/cf/e0/eecfe067a40576e50f42ce1ed3619ac4.jpg' alt='' className=' group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/></Link>
+                    <Link to='/shop'><img src='https://i.pinimg.com/564x/17/d8/12/17d81234c02642e8898c8eac113927bb.jpg' alt='' className='group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/></Link>
+                    <Link to='/shop'><img src='https://i.pinimg.com/564x/0a/a6/8b/0aa68bc150ae0b459dcf085ba3561f50.jpg' alt='' className='group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/></Link>
+                    <Link to='/shop'><img src='https://i.pinimg.com/564x/2f/f3/09/2ff309549573d74d8b6f339aff6adb85.jpg' alt='' className='lg:h-[457px]  group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/></Link>
                     
 
                 </div>
