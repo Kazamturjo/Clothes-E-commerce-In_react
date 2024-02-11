@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar'
 import { Outlet } from "react-router-dom";
-const Layout = () => {
+const Layout = ({cart,setCart}) => {
   return (
     <div>
-        <Navbar/>
+        <Navbar cart={cart} setCart={setCart}/>
         <Outlet/>
     </div>
   )

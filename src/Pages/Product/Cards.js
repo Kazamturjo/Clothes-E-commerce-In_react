@@ -33,14 +33,14 @@ const Cards = ({ product }) => {
       <div className='max-w-screen-2xl mx-auto mt-20 container  px-4 py-28'>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 '>
 
-                <Link className='relative  group overflow-hidden rounded-xl transition-transform transform hover:scale-105'><img src='https://i.pinimg.com/736x/d3/6d/4b/d36d4be82236d8cae27ab6e31b766683.jpg' alt='' className='rounded-xl '/>
+                <Link to='/shop' className='relative  group overflow-hidden rounded-xl transition-transform transform hover:scale-105'><img src='https://i.pinimg.com/736x/d3/6d/4b/d36d4be82236d8cae27ab6e31b766683.jpg' alt='' className='rounded-xl '/>
                 <p className=' absolute bottom-5 lg:left-28 md:left-10 left-11 text-4xl font-bold z-10 font-serif text-white '>Express Your Personality</p>
                 <div className="absolute inset-0 bg-black opacity-20 rounded-xl"></div></Link>
              
-                <Link className='relative  group overflow-hidden rounded-xl transition-transform transform hover:scale-105'><img src='https://i.pinimg.com/564x/0e/f7/5d/0ef75dc11ed684d1ea790e37268326c2.jpg' alt=''  className='rounded-xl'/>
+                <Link to='/shop'  className='relative  group overflow-hidden rounded-xl transition-transform transform hover:scale-105'><img src='https://i.pinimg.com/564x/0e/f7/5d/0ef75dc11ed684d1ea790e37268326c2.jpg' alt=''  className='rounded-xl'/>
                 <p className=' absolute bottom-5 lg:left-28 md:left-10 left-11 text-4xl font-bold z-10 font-serif text-white  '>Easy Care</p>
                 <div className="absolute inset-0 bg-black opacity-20 rounded-xl"></div></Link>
-                <Link className='relative  group overflow-hidden rounded-xl transition-transform transform hover:scale-105'><img src='https://i.pinimg.com/564x/fa/91/ca/fa91ca2701dad67ea7dec92143f3d2ac.jpg' alt='' className='rounded-xl'/>
+                <Link to='/shop' className='relative  group overflow-hidden rounded-xl transition-transform transform hover:scale-105'><img src='https://i.pinimg.com/564x/fa/91/ca/fa91ca2701dad67ea7dec92143f3d2ac.jpg' alt='' className='rounded-xl'/>
                 <p className='  absolute bottom-5 lg:left-28 md:left-10 left-11 text-4xl font-bold z-10 font-serif text-white  '>Perfect Fit</p>
                 <div className="absolute inset-0 bg-black opacity-20 rounded-xl"></div></Link>
               </div>

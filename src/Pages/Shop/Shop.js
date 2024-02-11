@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import ProductDetail from './SIngleProduct/SingleProduct';
+import { Link, useSearchParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Shop = () => {
+const Shop = ({cart,setCart}) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState(null);
+  const[searchParams,setSearchParams]= useSearchParams()
+
+  const typeFilter=searchParams.get('category')
+
 
 
   useEffect(() => {
@@ -27,14 +31,63 @@ const Shop = () => {
 
     fetchData();
   }, []);
+  const displayChar= typeFilter 
+  ? data.filter(phn=>phn.category === typeFilter):data
+
+  const setCategoryFilter = (category) => {
+   setSearchParams({ category });
+ };
    
-  const handleCardClick = (productId) => {
-    setSelectedProductId(productId);
-  };
+  // const handleCardClick = (productId) => {
+  //   setSelectedProductId(productId);
+  // };
+  const addToCart = (product) =>{
+   
+    setCart([...cart, product]);
+    toast.success('Item added on cart', {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
+  }
 
   return (
-    <div className='bg-gray-300 '>
-
+    <div className='bg-gray-500 '>
+       <ToastContainer
+position="top-right"
+autoClose={1500}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
+<h1 className="text-3xl font-bold text-center text-white font-serif mb-8">Explore our Product options</h1>
+<div className="flex flex-col md:flex-row justify-center items-center md:items-start flex-wrap space-y-4 md:space-y-0 md:space-x-4 mb-8">
+  <Link to="?category=t-shirt" className="van-type bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2 md:mb-0">
+    T-shirt
+  </Link>
+  <Link to="?category=Hoddie" className="van-type bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mb-2 md:mb-0">
+    Hoodie
+  </Link>
+  <Link to="?category=Jacket" className="van-type bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded mb-2 md:mb-0">
+    Jacket
+  </Link>
+  <Link to="?category=Shoe" className="van-type bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mb-2 md:mb-0">
+    Shoe
+  </Link>
+  <Link to="." className="van-type bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded mb-2 md:mb-0">
+    Clear
+  </Link>
+</div>
     
     <div className="container mx-auto p-4 ">
       <h1 className="text-3xl font-bold mb-4 text-wh">Product List</h1>
@@ -42,16 +95,15 @@ const Shop = () => {
         {isLoading ? (
           <div className="text-center bg-black text-white text-4xl font-serif">Loading.............</div>
         ) : (
-          data.map((product,index) => (
+          displayChar.map((product,index) => (
             
-            <div key={product._id} className="card mt-20 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800  dark:border-gray-700">
-              <div key={product._id} className="card  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800  dark:border-gray-700">
-                  {/* ... Existing product card content ... */}
+            <div key={product._id} className="card mt-20 bg-white border border-gray-200 rounded-lg shadow  ">
+              <div key={product._id} className="card  bg-white  rounded-lg shadow dark:bg-gray-800  dark:border-gray-700">
                  
                 </div>
-                <Link to={`/shop/${product._id}`} key={index} className="text-white  focus:outline-none font-medium rounded-lg text-sm z-50  text-center ">
+                <Link to={`/shop/${product._id}`} key={index} className="text-black  focus:outline-none font-medium rounded-lg text-sm z-50  text-center ">
                    <p className='hover:text-blue-300 p-4'>View Details</p> 
-             <div className="w-full p- rounded-t-lg" onClick={() => handleCardClick(product._id)}>
+             <div className="w-full p- rounded-t-lg" >
                   <img
                     src={product.image}
                     alt={product.productName}
@@ -63,7 +115,7 @@ const Shop = () => {
                 
               <div className="px-5 pb-5">
                 
-                <div className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <div className="text-xl font-semibold tracking-tight text-gray-900 dark:text-black">
                   {product.productName}
                 </div>
                 <div className="flex items-center mt-2.5 mb-5">
@@ -83,12 +135,15 @@ const Shop = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   
-                  <span className="text-3xl font-bold text-gray-900 dark:text-white">${product.price}</span>
+                  <span className="text-3xl font-bold text-gray-900 dark:text-black">${product.price}</span>
                   
-                  <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <button onClick={()=>addToCart(product)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Add to Cart
                   </button>
                 </div>
+                <button onClick={() => setCategoryFilter(product.category)}>
+        Filter by {product.category}
+      </button>
                 
               </div>
             </div>
@@ -100,4 +155,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Shop; 
