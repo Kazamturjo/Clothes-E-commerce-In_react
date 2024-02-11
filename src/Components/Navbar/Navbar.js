@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Cards from '../../Pages/Product/Cards';
 
-const Navbar = () => {
+const Navbar = ({cart,setCart}) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isHovered, setHovered] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 0;
+      setIsScrolled(scrolled);
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+  
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -22,7 +40,7 @@ const Navbar = () => {
     setHovered(false);
   };
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className={`bg-gray-800 p-4 transition-all duration-300 ${isScrolled > 0 ? 'fixed top-0 left-0 w-full z-50 bg-pink-300 text-black' : ''}`}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo or Brand */}
         <Link to='/' className="text-white lg:text-4xl text-2xl font-bold">#Never give up</Link>
@@ -77,7 +95,9 @@ const Navbar = () => {
         </div>
 
         {/* Search Input */}
+        
         <div className="md:flex hidden items-center flex-grow justify-center">
+        <Link to='shop'>
         <div className="relative" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave}>
       <ul className='text-white mr-4 md:mr-20 cursor-pointer'>
         Shop
@@ -90,13 +110,14 @@ const Navbar = () => {
         )}
       </ul>
     </div>
+    </Link>
     <div className='relative'>
 
     
           <input
             type="text"
             placeholder="Search"
-            className="bg-gray-700 text-white px-3 py-1 md:w-[700px] h-11 "
+            className={`bg-gray-700 text-white px-3 py-1 md:w-[700px] h-11 ${isScrolled ? 'bg-white':""}` }
             value={searchQuery}
             onChange={handleSearchChange}
           />
@@ -111,7 +132,7 @@ const Navbar = () => {
         </div>
 
         <ul className="flex items-center gap-2 2xsm:gap-4">
-          <Link to="/cart">
+          <Link to="/cart" className='relative'>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -126,6 +147,7 @@ const Navbar = () => {
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
               />
             </svg>
+            <span className=' absolute bg-blue-400 text-white rounded-full -top-3 -right-3 w-4 h-6 text-center'>{cart.length}</span>
           </Link>
         </ul>
       </div>
