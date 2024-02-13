@@ -1,11 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Cards from '../../Pages/Product/Cards';
+import Cart from '../Cart/Cart';
 
 const Navbar = ({cart,setCart}) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isHovered, setHovered] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      if (!event.target.closest('.cart-toggle-button') && isCartOpen) {
+        setIsCartOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, [isCartOpen]);
+
+  const handleToggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const handleCloseCart = () => {
+    setIsCartOpen(false);
+  };
 
 
 
@@ -34,8 +59,7 @@ const Navbar = ({cart,setCart}) => {
     };
   }, []);
 
-
-  const [searchQuery, setSearchQuery] = useState('');
+ 
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -143,25 +167,38 @@ const Navbar = ({cart,setCart}) => {
 
         </div>
 
-        <ul className="flex items-center gap-2 2xsm:gap-4">
-          <Link to="/cart" className='relative'>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-              />
-            </svg>
-            <span className=' absolute bg-blue-400 text-white rounded-full -top-3 -right-3 w-4 h-6 text-center'>{cart?.length}</span>
-          </Link>
-        </ul>
+        <div className="flex items-center gap-2 2xsm:gap-4">
+        <button
+        onClick={handleToggleCart}
+        className={`relative transition-transform duration-500 transform ${
+          isCartOpen ? 'bg-blue-500' : 'bg-gray-500'
+        } hover:bg-blue-600 p-2 rounded-full cart-toggle-button`}
+        aria-label="Toggle Cart"
+      >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-6 h-6 text-white"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+      />
+    </svg>
+    <span className="absolute bg-blue-400 text-white rounded-full -top-3 -right-3 w-4 h-6 text-center">
+          {cart?.length}
+        </span>
+  </button>
+  {isCartOpen && (
+        <div className="transition-all duration-300 ease-in-out">
+          <Cart cart={cart} setCart={setCart} onClose={handleCloseCart} />
+        </div>
+      )}
+</div>
       </div>
     </nav>
   );

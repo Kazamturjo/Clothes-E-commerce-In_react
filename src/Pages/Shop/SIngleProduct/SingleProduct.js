@@ -54,11 +54,11 @@ const ProductDetails = ({cart,setCart}) => {
     //   cart = [];
     // }
   
-    let data =cart.find(dt=>dt.id===current.id)
+    let data =cart.find(dt=>dt._id===current._id)
     if(data){
 
       let newInfo=cart.map(dt => {
-        if(dt.id ===data.id){
+        if(dt._id ===data._id){
           return { ...dt, quantity: dt.quantity + 1 };
         }else{
           return dt

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 
 const Cart = ({ cart, setCart }) => {
-    const handleClose = () => {
-      window.history.back();
-    };
+  const handleClose = () => {
+    window.history.back();
+  };
 
 
   const handleRemoveItem = (id) => {
-    const updatedCart = cart.filter((item) => item.id !== id);
+    const updatedCart = cart.filter((item) => item._id !== id);
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
@@ -18,7 +18,7 @@ const Cart = ({ cart, setCart }) => {
   };
 
   return (
-    <div classNameName="flex justify-center mt-8">
+    <div classNameName="flex justify-center mt-8 ">
       <div className="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
  
   <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
@@ -69,7 +69,7 @@ const Cart = ({ cart, setCart }) => {
                           <p className="text-gray-500">{dt.quantity} items</p>
 
                           <div className="flex">
-                            <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={()=>handleRemoveItem(dt.id)}>Remove</button>
+                            <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={()=>handleRemoveItem(dt._id)}>Remove</button>
                      
                           </div>
                         </div>
