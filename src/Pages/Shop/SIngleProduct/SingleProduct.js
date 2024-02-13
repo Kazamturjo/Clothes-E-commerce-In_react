@@ -6,8 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetails = ({cart,setCart}) => {
-  const [product, setProduct] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [current, setCurrent] = useState({});
+  // const [quantity, setQuantity] = useState(1);
+
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   const { id } = useParams();
@@ -16,16 +17,13 @@ const ProductDetails = ({cart,setCart}) => {
   useEffect(() => {
     const fetchData = async () => {
         try {
-          setIsLoading(true);
           const response = await fetch (`http://localhost:5000/product/${id}`);
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
           const json = await response.json();
-          setIsLoading(false);
-          setProduct(json.data); 
+          setCurrent(json.data); 
         } catch (error) {
-          setIsLoading(false);
           console.error("Error fetching data:", error);
         }
         
@@ -36,16 +34,46 @@ const ProductDetails = ({cart,setCart}) => {
       fetchData();
     }, [id]);
 
-  // if (isLoading) {
-  //   return <div className='text-4xl bg-black font-serif mt-20 text-center text-white '>Loading product details...</div>;
-  // }
+    useEffect(() => {
+      try {
+        const storedData = localStorage.getItem('cart');
+        if (storedData) {
+          setCart(JSON.parse(storedData));
+        } else {
+          setCart([]);
+        }
+      } catch (error) {
+        console.error('Error parsing JSON from localStorage:', error);
+        setCart([]);
+      }
+    }, []);
 
-  // if (!product) {
-  //   return <div>No product found</div>;
-  // }
-  const addToCart = (product) =>{
+  const addToCart = () =>{
+    // if (!Array.isArray(cart)) {
+    //   // If cart is not an array, initialize it as an empty array
+    //   cart = [];
+    // }
+  
+    let data =cart.find(dt=>dt.id===current.id)
+    if(data){
+
+      let newInfo=cart.map(dt => {
+        if(dt.id ===data.id){
+          return { ...dt, quantity: dt.quantity + 1 };
+        }else{
+          return dt
+        }
+      })
+      console.log("here is my new Info",newInfo);
+
+      localStorage.setItem('cart',JSON.stringify(newInfo))
+      setCart(newInfo)
+    }else{
+      let newInfo =[...cart,{...current,quantity:1}];
+      localStorage.setItem("cart",JSON.stringify(newInfo))
+      setCart(newInfo)
+    }
    
-    setCart([...cart, product]);
     toast.success('Item added on cart', {
       position: "top-right",
       autoClose: 1500,
@@ -59,7 +87,7 @@ const ProductDetails = ({cart,setCart}) => {
   }
 
   return (
-    <div className="bg-gray-100  py-8 container mx-auto p-4  ">
+    <div className="bg-gray-100 mt-8  py-8 container mx-auto p-4 ">
        <ToastContainer
 position="top-right"
 autoClose={1500}
@@ -72,9 +100,8 @@ draggable
 pauseOnHover
 theme="dark"
 />
-      {isLoading ? (
-  <div className='text-4xl bg-black font-serif text-white '>Loading product details...</div>
-) : (  
+      {current ? (
+  
   <>
        <Link
   to="/shop"
@@ -90,35 +117,35 @@ theme="dark"
   </svg>
   <span className="text-lg font-semibold">Back to all products</span>
 </Link>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex flex-col md:flex-row -mx-4">
-          <div className="md:flex-1 px-4">
-            <div className=" rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
+          <div className="md:flex-1 px-4 m-4">
+            <div className=" rounded-lg lg:h-[600px]  bg-gray-300 dark:bg-gray-700 mb-4">
               <img
-                className="w-full h-full object-cover"
-                src={product.image}
-                alt={product.productName}
+                className="w-full lg:h-full object-contain rounded-lg"
+                src={current?.image}
+                alt={current?.productName}
               />
             </div>
             <div className="flex -mx-2 mb-4">
               <div className="w-1/2 px-2">
-                <button onClick={()=>addToCart(product)} className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">
+                <button onClick={addToCart} className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">
                   Add to Cart
                 </button>
               </div>
               <div className="w-1/2 px-2">
-                <button className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600">
-                  Add to Wishlist
+                <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4  rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">
+                   Wishlist
                 </button>
               </div>
             </div>
           </div>
           <div className="md:flex-1 px-4">
             <h2 className="text-2xl font-bold text-gray-800 dark:text-black mb-2">
-              {product.productName}
+              {current?.productName}
             </h2>
             <p className="text-gray-600 dark:text-gray-900 text-sm mb-4">
-              {product.description}
+              {current?.description}
             </p>
             <div className="flex mb-4">
               <div className="mr-4">
@@ -126,7 +153,7 @@ theme="dark"
                   Price:
                 </span>
                 <span className="text-gray-600 dark:text-gray-900">
-                  ${product.price}
+                  ${current?.price}
                 </span>
               </div>
               <div>
@@ -142,6 +169,9 @@ theme="dark"
         </div>
       </div>
       </>
+      ):(
+        <div className='text-4xl bg-black font-serif text-white '>Loading product details...</div>
+
     )}
     </div>
   );
