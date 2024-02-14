@@ -3,6 +3,7 @@ import Hero from '../Hero/Hero'
 import Product from '../Product/Product'
 import Catagorry from '../Catagory/Catagorry'
 import Offter from '../OffterBanner/Offter'
+import NewsletterForm from '../NesLetter/NewsLetter'
 
 const Home = () => {
   return (
@@ -14,6 +15,10 @@ const Home = () => {
         <Product/>
         </div>
         <Offter/>
+        <div className=''>
+          <NewsletterForm/>
+
+        </div>
     </div>
   )
 }
