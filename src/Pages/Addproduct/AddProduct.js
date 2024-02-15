@@ -66,9 +66,15 @@ const [data,setData] = useState({
       </div>
       
       <div className="mb-4">
-        <label className="block mb-1 font-semibold" htmlFor="category">Category:</label>
-        <input name='category' required className="w-full px-3 py-2 border rounded-md" type="text" id="category" value={data.category} onChange={handleChange} />
-      </div>
+  <label className="block mb-1 font-semibold" htmlFor="category">Category:</label>
+  <select name='category' required className="w-full px-3 py-2 border rounded-md" id="category" value={data.category} onChange={handleChange}>
+    <option value="">Select a category</option>
+    <option value="t-shirt">T-Shirt</option>
+    <option value="shoe">Shoe</option>
+    <option value="hoodie">Hoodie</option>
+    <option value="jacket">Jacket</option>
+  </select>
+</div>
       <div className="mb-4">
         <label className="block mb-1 font-semibold" htmlFor="imageUrl">Image URL:</label>
         <input name='image' required className="w-full px-3 py-2 border rounded-md" type="text" id="imageUrl" value={data.image} onChange={handleChange} />
