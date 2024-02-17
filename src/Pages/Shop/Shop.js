@@ -49,7 +49,7 @@ const Shop = ({cart,setCart}) => {
   }, [])
   
   const displayChar= typeFilter 
-  ? data.filter(phn=>phn.category === typeFilter):data
+  ? data.filter(phn=>phn.category.toLowerCase() === typeFilter.toLowerCase()):data
  ;
 
   const setCategoryFilter = (category) => {
