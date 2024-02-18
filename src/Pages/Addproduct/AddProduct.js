@@ -71,7 +71,7 @@ const [data,setData] = useState({
     <option value="">Select a category</option>
     <option value="t-shirt">T-Shirt</option>
     <option value="shoe">Shoe</option>
-    <option value="hoodie">Hoodie</option>
+    <option value="hoddie">Hoddie</option>
     <option value="jacket">Jacket</option>
   </select>
 </div>

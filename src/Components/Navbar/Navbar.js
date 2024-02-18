@@ -81,12 +81,12 @@ const Navbar = ({cart,setCart}) => {
     <nav className={`bg-gray-800 p-4 transition-all duration-300 ${isScrolled > 0 ? 'fixed top-0 left-0 w-full z-50 bg-purple-950 text-black' : ''}`}>
       <div className="container mx-auto flex justify-between relative items-center">
         {/* Logo or Brand */}
-        <Link to='/' className="text-white lg:text-4xl text-2xl ml-10 font-bold">{''} #Never give up</Link>
+        <Link to='/' className="text-white lg:text-4xl text-2xl ml-10 font-bold font-abc">{''} Never give up</Link>
 
         {/* Hamburger Menu for Mobile */}
         <div className={`  ${isScrolled ? 'block' : 'hidden'}`}>
           <button
-            className={`block absolute right- left-0  top-2  ease-in-out rounded-sm border-stroke text-white shadow-sm transition-transform duration-300 border transform`}
+            className={`block absolute right- left-0  top-1   ease-in-out rounded-sm border-stroke text-white shadow-sm transition-transform duration-300 border transform`}
             onClick={toggleMobileMenu}
           >
             {isMobileMenuOpen ? (
@@ -126,8 +126,13 @@ const Navbar = ({cart,setCart}) => {
         {/* Responsive Navigation */}
         <div className={`md:flex items-center space-x-4 text-white fixed top-0 right-0 h-screen bg-purple-950 z-10 p-11 transition-transform duration-500 transform ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <ul className='text-white space-y-5'>
+            <li>lroem</li>
+            <li>lroem</li>
+            <li>lroem</li>
+            <li>lroem</li>
+            <li>lroem</li>
             
-            <NavbarHamburger/>
+            {/* <NavbarHamburger/> */}
             
           </ul>
         </div>
@@ -137,7 +142,7 @@ const Navbar = ({cart,setCart}) => {
         <div className="md:flex hidden items-center flex-grow justify-center">
         <Link to='shop'>
         <div className="relative" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave}>
-      <ul className='text-white mr-4 md:mr-20 cursor-pointer'>
+      <ul className='text-white font-thin mr-4 md:mr-20 cursor-pointer'>
         Shop
         {isHovered && (
           <ul className="absolute top-4 w-[500px] z-10 h-96 p-4 rounded-lg  pt-6 bg-gray-800 text-white py-2 mt-2 space-y-2">

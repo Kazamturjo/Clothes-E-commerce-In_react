@@ -20,7 +20,7 @@ const Catagorry = () => {
             <img src={img6} alt=''/>
         </div>
         <div className='lg:flex flex-col mt-8 md:flex-row text-center gap-6  relative'>
-            <p className='font-semibold transition-transform transform hover:scale-150 uppercase lg:-rotate-90 text-center md:h-20  bg-black lg:h-11 lg:absolute top-1/2 -left-60 text-white lg:p-1.5 p-2 rounded-lg inline-flex'>Explore new and popular styles</p>
+            <p className='font-semibold transition-transform transform hover:scale-150 uppercase lg:-rotate-90 text-center md:h-20  bg-black lg:h-11 lg:absolute top-1/2 -left-60 text-white lg:p-1.5 p-2 rounded-lg inline-flex '>Explore new and popular styles</p>
             <div >
             <Link to='/shop'>
             <img src='https://i.pinimg.com/564x/11/02/52/1102522f19d0c42879be92430a5e7908.jpg' alt='' className='w-full sm:h-[910px] p-3 lg:p-0 h-96 group overflow-hidden rounded-xl transition-transform transform hover:scale-105'/>

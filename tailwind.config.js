@@ -5,6 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily:{
+      abc:['Oleo Script', 'system-ui']
+      
+    },
+    
   },
   plugins: [],
 }

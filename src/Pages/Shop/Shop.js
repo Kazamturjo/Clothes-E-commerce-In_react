@@ -93,7 +93,7 @@ const Shop = ({cart,setCart}) => {
   
 
   return (
-    <div className='bg-gray-500 '>
+    <div className=' '>
        <ToastContainer
 position="top-right"
 autoClose={1500}
@@ -106,39 +106,40 @@ draggable
 pauseOnHover
 theme="dark"
 />
-<h1 className="text-3xl font-bold text-center text-white font-serif mb-8">Explore our Product options</h1>
-<div className="flex flex-col md:flex-row justify-center items-center md:items-start flex-wrap space-y-4 md:space-y-0 md:space-x-4 mb-8">
-  <Link to="?category=t-shirt" className="van-type bg-blue-500 transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+<h1 className="text-3xl font-bold text-center text-black font-abc p-3 mb-8">Explore our Product options</h1>
+<div className="flex font-bold flex-col md:flex-row justify-center items-center md:items-start flex-wrap space-y-4 md:space-y-0 md:space-x-4 mb-8 gap-20">
+  <Link to="?category=t-shirt" className="van-type bg-blue-500 font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
     T-shirt
   </Link>
-  <Link to="?category=Hoddie" className="van-type bg-green-500 transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+  <Link to="?category=Hoddie" className="van-type bg-green-500 font-abc text-xl transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
     Hoodie
   </Link>
-  <Link to="?category=Jacket" className="van-type bg-purple-500 transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+  <Link to="?category=Jacket" className="van-type bg-purple-500 font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
     Jacket
   </Link>
-  <Link to="?category=Shoe" className="van-type bg-red-500 transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+  <Link to="?category=Shoe" className="van-type bg-red-500 font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
     Shoe
   </Link>
-  <Link to="." className="van-type bg-gray-500 transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+  <Link to="." className="van-type bg-gray-500 font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
     Clear
   </Link>
 </div>
     
     <div className="container mx-auto p-4 ">
+     
       <div className='flex justify-between'>
-      {/* <h1 className="lg:text-3xl md:text-xl text-xl font-bold mb-4">Product List</h1> */}
       <Link to="/addproduct" className="flex bg-white items-center gap-2 p-2 rounded-3xl shadow-2xl hover:shadow-3xl transition duration-300">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
     <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clipRule="evenodd" />
   </svg>
-  <h2 className="text-xl mt-3 font-bold mb-4">Add product</h2>
+  <h2 className="text-xl mt-3 font-bold font-abc   mb-4">Add product</h2>
 </Link>
 
       </div>
+      <h1 className=' text-center font-abc text-2xl'>{typeFilter ? typeFilter.toUpperCase() : "All Products"}</h1>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {isLoading ? (
-          <div className="text-center bg-black scale-95 text-white text-4xl font-serif">Loading.............</div>
+          <div className="text-center bg-black scale-95 text-white text-4xl font-abc ">Loading.............</div>
         ) : (
           displayChar.map((product,index) => (
             
@@ -147,7 +148,7 @@ theme="dark"
                  
                 </div>
                 <Link to={`/shop/${product._id}`} key={index} className="text-black  focus:outline-none font-medium rounded-lg text-sm z-50  text-center ">
-                   <p className='hover:text-blue-300 p-4'>View Details</p> 
+                   <p className='hover:text-blue-300 font-abc p-4'>View Details</p> 
              <div className="w-full p- rounded-t-lg" >
                   <img
                     src={product.image}
@@ -160,7 +161,7 @@ theme="dark"
                 
               <div className="px-5 pb-5">
                 
-                <div className="text-xl font-semibold tracking-tight text-gray-900 dark:text-black">
+                <div className="text-xl font-semibold font-abc tracking-tight text-gray-900 dark:text-black">
                   {product.productName}
                 </div>
                 <div className="flex items-center mt-2.5 mb-5">
@@ -182,7 +183,7 @@ theme="dark"
                   
                   <span className="text-3xl font-bold text-gray-900 dark:text-black">${product.price}</span>
                   
-                  <button onClick={()=>addToCart(product)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <button onClick={()=>addToCart(product)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-abc focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Add to Cart
                   </button>
                 </div>

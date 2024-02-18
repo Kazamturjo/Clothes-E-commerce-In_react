@@ -3,9 +3,9 @@ import React from 'react';
 function Footer() {
     return (
         <footer className="bg-gray-800 text-white py-12">
-            <div className="container mx-auto flex flex-wrap justify-between px-2">
+            <div className="container mx-auto flex flex-wrap justify-between px-4">
                 <div className="w-full md:w-1/4 lg:w-auto mb-6 md:mb-0">
-                    <div className="font-semibold mb-2">ABOUT US</div>
+                    <div className="font-semibold mb-4 text-lg">ABOUT US</div>
                     <ul className="text-sm">
                         <li><a href="#" className="hover:text-gray-300">TERMS & CONDITIONS</a></li>
                         <li><a href="#" className="hover:text-gray-300">PRIVACY POLICY</a></li>
@@ -15,7 +15,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div className="w-full md:w-1/4 lg:w-auto mb-6 md:mb-0">
-                    <div className="font-semibold mb-2">MEN</div>
+                    <div className="font-semibold mb-4 text-lg">MEN</div>
                     <ul className="text-sm">
                         <li><a href="#" className="hover:text-gray-300">SHORT SLEEVE</a></li>
                         <li><a href="#" className="hover:text-gray-300">LONG SLEEVE</a></li>
@@ -27,7 +27,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div className="w-full md:w-1/4 lg:w-auto mb-6 md:mb-0">
-                    <div className="font-semibold mb-2">WOMEN</div>
+                    <div className="font-semibold mb-4 text-lg">WOMEN</div>
                     <ul className="text-sm">
                         <li><a href="#" className="hover:text-gray-300">COMFY TROUSER</a></li>
                         <li><a href="#" className="hover:text-gray-300">FACE MASK</a></li>
@@ -39,7 +39,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div className="w-full md:w-1/4 lg:w-auto mb-6 md:mb-0">
-                    <div className="font-semibold mb-2">KIDS</div>
+                    <div className="font-semibold mb-4 text-lg">KIDS</div>
                     <ul className="text-sm">
                         <li><a href="#" className="hover:text-gray-300">MAGGIE</a></li>
                         <li><a href="#" className="hover:text-gray-300">SHORT SLEEVE</a></li>
@@ -48,6 +48,9 @@ function Footer() {
                         <li><a href="#" className="hover:text-gray-300">TROUSER</a></li>
                     </ul>
                 </div>
+            </div>
+            <div className="mt-8 text-center text-gray-500 text-sm">
+                © 2024 Your Company. All rights reserved.
             </div>
         </footer>
     );

@@ -37,22 +37,22 @@ const NewsletterForm = () => {
           onSubmit={handleSubmit}
           className="bg-gray-700 shadow-md w-full   rounded px-8 pt-6 pb-8 mb-4 transition duration-500 ease-in-out transform "
         >
-          <h2 className="lg:text-2xl font-bold mb-4 font-serif  text-center shadow-2xl text-orange-500">
+          <h2 className="lg:text-2xl font-bold mb-4 font-abc  text-center shadow-2xl text-orange-500">
             Get Special Discounts In Your Inbox
           </h2>
-          <p className="text-orange-400 font-serif font-semibold shadow-2xl mb-6 text-center">
+          <p className="text-orange-400 font-abc font-semibold shadow-2xl mb-6 text-center">
             Enter email to get offers, discounts and more.
           </p>
           <div className="mb-4 flex items-center gap-11">
             <label
-              className="block text-orange-400 shadow-lg lg:text-xl font-bold mb-2"
+              className="block text-orange-400 font-abc shadow-lg lg:text-xl font-bold mb-2"
               htmlFor="email"
             >
               Email:
             </label>
             <input
               id="email"
-              className="shadow appearance-none border rounded lg:w-96 md:w-48 w-48 py-2 px-3 text-gray-700 drop-shadow-2xl bg-orange-200 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none font-abc border rounded lg:w-96 md:w-48 w-48 py-2 px-3 text-gray-700 drop-shadow-2xl bg-orange-200 leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -62,7 +62,7 @@ const NewsletterForm = () => {
           </div>
           <div className="flex items-center justify-center">
             <button
-              className="bg-orange-500 drop-shadow-lg hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
+              className="bg-orange-500 font-abc drop-shadow-lg hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
               type="submit"
             >
               Subscribe
@@ -74,12 +74,12 @@ const NewsletterForm = () => {
         </form>
       ) : (
         
-        <p className="text-green-500 text-center  mx-auto container text-3xl font-serif font-semibold shadow-2xl h-11">Thank you for subscribing!</p>
+        <p className="text-green-500 text-center  mx-auto container text-3xl font-abc font-semibold shadow-2xl h-11 ">Thank you for subscribing!</p>
       )}
       <div className=' lg:absolute right-10 bottom-56 '>
 
       
-      <p className="text-center text-orange-500 font-serif font-bold">
+      <p className="text-center text-orange-500 font-abc font-bold">
         For any help you may call us at{' '}
         <a href="tel:+8809677666888" className="underline">
           +8809677666888
