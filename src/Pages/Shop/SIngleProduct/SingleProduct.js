@@ -17,7 +17,7 @@ const ProductDetails = ({cart,setCart}) => {
   useEffect(() => {
     const fetchData = async () => {
         try {
-          const response = await fetch (`http://localhost:5000/product/${id}`);
+          const response = await fetch (`https://dev-ecommerce-backend.onrender.com/product/${id}`);
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
@@ -87,7 +87,7 @@ const ProductDetails = ({cart,setCart}) => {
   }
 
   return (
-    <div className="bg-gray-100 mt-8  py-8 container mx-auto p-4 ">
+    <div className="bg-gray-100 mt-0 font-abc  py-8 container mx-auto pt-28 p-7 ">
        <ToastContainer
 position="top-right"
 autoClose={1500}

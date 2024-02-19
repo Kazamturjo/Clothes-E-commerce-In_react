@@ -1,4 +1,4 @@
-POST http://localhost:5000/product/add/500
+POST https://dev-ecommerce-backend.onrender.com/product/add/500
 content-type: application/json
 
 {

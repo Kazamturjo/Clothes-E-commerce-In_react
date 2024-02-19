@@ -9,17 +9,11 @@ const Shop = ({cart,setCart}) => {
   const[searchParams,setSearchParams]= useSearchParams()
 
   const typeFilter=searchParams.get('category')
-
-
-  
-
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("http://localhost:5000/product/all?page=1&pageSize=100");
+        const response = await fetch("https://dev-ecommerce-backend.onrender.com/product/all?page=1&pageSize=100");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

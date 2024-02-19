@@ -30,7 +30,7 @@ const [data,setData] = useState({
 
    
 
-    axios.post("http://localhost:5000/product/add/500", data)
+    axios.post("https://dev-ecommerce-backend.onrender.com/product/add/500", data)
       .then(response => {
         console.log("Product added successfully:", response);
     setData(  {productName: "",
