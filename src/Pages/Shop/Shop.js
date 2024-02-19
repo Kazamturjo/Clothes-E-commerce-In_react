@@ -106,18 +106,18 @@ draggable
 pauseOnHover
 theme="dark"
 />
-<h1 className="text-3xl font-bold text-center text-black font-abc p-3 mb-8">Explore our Product options</h1>
+<h1 className="text-3xl font-bold text-center text-black  font-abc lg:py-20 mb-8">Explore our Product options</h1>
 <div className="flex font-bold flex-col md:flex-row justify-center items-center md:items-start flex-wrap space-y-4 md:space-y-0 md:space-x-4 mb-8 gap-20">
-  <Link to="?category=t-shirt" className="van-type bg-blue-500 font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+  <Link to="?category=t-shirt" className="van-type  bg-white drop-shadow-2xl   font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-black px-4 py-2 rounded mb-2 md:mb-0">
     T-shirt
   </Link>
-  <Link to="?category=Hoddie" className="van-type bg-green-500 font-abc text-xl transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+  <Link to="?category=Hoddie" className="van-type  bg-white  drop-shadow-2xl  font-abc text-xl transform hover:scale-105 transition-all duration-300 text-black px-4 py-2 rounded mb-2 md:mb-0">
     Hoodie
   </Link>
-  <Link to="?category=Jacket" className="van-type bg-purple-500 font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+  <Link to="?category=Jacket" className="van-type bg-white font-abc text-xl drop-shadow-2xl  transform hover:scale-105 transition-all duration-300 text-black px-4 py-2 rounded mb-2 md:mb-0">
     Jacket
   </Link>
-  <Link to="?category=Shoe" className="van-type bg-red-500 font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
+  <Link to="?category=Shoe" className="van-type  bg-white drop-shadow-2xl   font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-black px-4 py-2 rounded mb-2 md:mb-0">
     Shoe
   </Link>
   <Link to="." className="van-type bg-gray-500 font-abc text-xl  transform hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded mb-2 md:mb-0">
@@ -137,16 +137,16 @@ theme="dark"
 
       </div>
       <h1 className=' text-center font-abc text-2xl'>{typeFilter ? typeFilter.toUpperCase() : "All Products"}</h1>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 drop-shadow-2xl">
         {isLoading ? (
-          <div className="text-center bg-black scale-95 text-white text-4xl font-abc ">Loading.............</div>
+          <div className="text-cente drop-shadow-2xl shadow-slate-600 bg-black scale-95 text-white text-4xl font-abc ">Loading.............</div>
         ) : (
           displayChar.map((product,index) => (
             
             <div key={product._id} className="card mt-20 bg-white border border-gray-200 rounded-lg shadow  transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75">
-              <div key={product._id} className="card  bg-white  rounded-lg shadow dark:bg-gray-800  dark:border-gray-700">
+              {/* <div key={product._id} className="card  bg-white  rounded-lg shadow dark:bg-gray-800  dark:border-gray-700">
                  
-                </div>
+                </div> */}
                 <Link to={`/shop/${product._id}`} key={index} className="text-black  focus:outline-none font-medium rounded-lg text-sm z-50  text-center ">
                    <p className='hover:text-blue-300 font-abc p-4'>View Details</p> 
              <div className="w-full p- rounded-t-lg" >

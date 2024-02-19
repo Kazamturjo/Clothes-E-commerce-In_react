@@ -78,13 +78,13 @@ const Navbar = ({cart,setCart}) => {
     setHovered(false);
   };
   return (
-    <nav className={`bg-gray-800 p-4 transition-all duration-300 ${isScrolled > 0 ? 'fixed top-0 left-0 w-full z-50 bg-purple-950 text-black' : ''}`}>
+    <nav className={`lg:fixed p-4 w-full transition-all duration-300 ${isScrolled > 0 ? 'fixed top-0 left-0 w-full z-50 bg-purple-950 text-white' : ''}`}>
       <div className="container mx-auto flex justify-between relative items-center">
         {/* Logo or Brand */}
-        <Link to='/' className="text-white lg:text-4xl text-2xl ml-10 font-bold font-abc">{''} Never give up</Link>
+        <Link to='/' className={` lg:text-4xl  text-2xl ml-10 font-bold font-abc${isScrolled ? 'text--500  text-white font-abc rounded-2xl shadow-purple-600 shadow-xl' : ''}`}>{''} Never give up</Link>
 
         {/* Hamburger Menu for Mobile */}
-        <div className={`  ${isScrolled ? 'block' : 'hidden'}`}>
+        <div className={`  ${isScrolled ? 'block  shadow-black shadow-lg' : 'hidden'}`}>
           <button
             className={`block absolute right- left-0  top-1   ease-in-out rounded-sm border-stroke text-white shadow-sm transition-transform duration-300 border transform`}
             onClick={toggleMobileMenu}
@@ -142,7 +142,7 @@ const Navbar = ({cart,setCart}) => {
         <div className="md:flex hidden items-center flex-grow justify-center">
         <Link to='shop'>
         <div className="relative" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave}>
-      <ul className='text-white font-thin mr-4 md:mr-20 cursor-pointer'>
+      <ul className={`text-black font-bold  mr-4 md:mr-20 cursor-pointer   ${isScrolled ? 'text-white' : ''}`}>
         Shop
         {isHovered && (
           <ul className="absolute top-4 w-[500px] z-10 h-96 p-4 rounded-lg  pt-6 bg-gray-800 text-white py-2 mt-2 space-y-2">
@@ -161,7 +161,7 @@ const Navbar = ({cart,setCart}) => {
           <input
             type="text"
             placeholder="Search"
-            className={`bg-gray-700 text-white px-3 py-1 md:w-[700px] h-11 ${isScrolled ? 'bg-white':""}` }
+            className={`rounded-md text-white px-3 py-1 md:w-[700px] h-11 ${isScrolled ? 'bg-white':""}` }
             value={searchQuery}
             onChange={handleSearchChange}
           />
